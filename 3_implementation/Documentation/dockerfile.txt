@@ -1,0 +1,11 @@
+FROM golang:alpine
+ENV LANG en_US.UTF-8
+
+COPY . /go/src/github.com/JEFFRYJOHNSONJ/M3_Tic_Tac_Toe.git
+WORKDIR /go/src/github.com/JEFFRYJOHNSONJ/M3_Tic_Tac_Toe.git
+
+RUN apk add --no-cache git
+RUN go get ./
+RUN go build -o ./_bin/Tictactoe
+
+ENTRYPOINT "./_bin/Tictactoe"
